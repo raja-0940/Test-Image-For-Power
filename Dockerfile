@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/rhel9
+FROM registry.redhat.io/ubi9:9.2-722
 MAINTAINER <Rajakumar.Batulla@ibm.com>
 LABEL name="happywebserver1" \
       vendor="Example Inc1" \
