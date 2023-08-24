@@ -1,7 +1,7 @@
 name: Multiarch build
 
 on:
-  push:
+  workflow_dispatch:
       
 env:
   IMAGE_NAME: rhel-ubi9
@@ -19,6 +19,13 @@ jobs:
         
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
+
+      - name: Log in to Red Hat Registry
+        uses: redhat-actions/podman-login@v1
+        with:
+          registry: registry.redhat.io
+          username: ${{ secrets.REGISTRY_REDHAT_IO_USER }}
+          password: ${{ secrets.REGISTRY_REDHAT_IO_PASSWORD }}
         
       - name: Build image 
         id: build-image
